@@ -5,14 +5,17 @@ import bcryptjs from "bcryptjs";
 import bodyParser from "body-parser";
 import session from "express-session";
 import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-
-import path from "path";
-const __dirname = path.resolve();
 app.set("views", path.join(__dirname, "views"));
 
 // Middleware setup
