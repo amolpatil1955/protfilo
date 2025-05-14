@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 
 import bodyParser from 'body-parser';
 
@@ -54,7 +54,7 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcryptjs.hash(password, 10);
 
     try {
         await User.create({ name, email, password: hashedPassword });
@@ -83,7 +83,7 @@ app.post("/login", async (req, res) => {
         }
 
         // If password is hashed (recommended)
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcryptjs.compare(password, user.password);
         if (!isMatch) {
             return res.redirect("/");
         }
