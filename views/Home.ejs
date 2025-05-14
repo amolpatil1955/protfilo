@@ -337,11 +337,16 @@
         /* Contact Section */
         .contact {
             background-color: var(--card);
+            width: 100vw;
+            height: auto;
+            padding-right: 5rem;
         }
         
         .contact-content {
             display: flex;
-            gap: 4rem;
+            justify-content: space-between;
+            align-items: start;
+            gap: 5rem;
         }
         
         .contact-form {
@@ -360,7 +365,8 @@
         
         .form-input {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1rem;
+            font-size: 1rem;
             border-radius: 0.375rem;
             background-color: var(--background);
             border: 1px solid var(--muted);
@@ -375,7 +381,8 @@
         }
         
         .form-textarea {
-            min-height: 150px;
+            min-width: 400px;
+            min-height: 500px;
             resize: vertical;
         }
         
@@ -458,7 +465,20 @@
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
-        
+        /* logout button animation */
+            .logout{
+                padding: 10px 20px;
+                border: none;
+                border-radius: 0.375rem;
+                background-color: var(--primary);
+                color: white;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+            .logout a{
+                color: white;
+                text-decoration: none;
+            }
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -510,16 +530,11 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div>
-                <% if (user) { %>
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
-<% } else { %>
-    <p>You are not logged in.</p>
-<% } %>
+            <div class="logout">
+                <form action=".logout" method="get">
+                    <a href="/logout">Logout</a>
+                </form>
             </div>
-        </div>
     </nav>
 
     <!-- Hero Section -->
