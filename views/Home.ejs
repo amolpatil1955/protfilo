@@ -69,7 +69,7 @@
         }
         
         .nav-logo {
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--foreground);
             text-decoration: none;
@@ -137,7 +137,7 @@
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1.5rem;
@@ -510,6 +510,15 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
+            <div>
+                <% if (user) { %>
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+<% } else { %>
+    <p>You are not logged in.</p>
+<% } %>
+            </div>
         </div>
     </nav>
 
@@ -518,7 +527,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Hi, I'm <span>AMOL PATIL</span><br>Frontend Developer</h1>
+                    <h1 class="hero-title">Hi, I'm <br>
+                        <span>AMOL PATIL</span> <br>FullStack Developer</h1>
                     <p class="hero-subtitle">I build exceptional digital experiences with modern technologies and beautiful designs.</p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Work</a>
