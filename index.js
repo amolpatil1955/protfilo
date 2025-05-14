@@ -7,6 +7,7 @@ import session from "express-session";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,7 +17,8 @@ const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-app.set("views", path.join(__dirname, "views"));
+app.set('views', path.join(__dirname, 'views')); // Critical for deployment
+app.set('view engine', 'ejs');
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -37,9 +39,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "views"));
 app.use(express.static("public"));
 
+
 // MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
