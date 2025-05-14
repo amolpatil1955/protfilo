@@ -107,7 +107,7 @@ app.post("/login", async (req, res) => {
     req.session.user = user; // 🔥 Missing in your original code!
     console.log("Login successful");
 
-    return res.redirect("/home");
+    return res.redirect("/Home");
   } catch (err) {
     console.error("Login error:", err);
     return res.status(500).send("Internal Server Error");
@@ -120,7 +120,7 @@ app.get("/home", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/");
   }
-  res.render("home", { user: req.session.user });
+  res.render("Home", { user: req.session.user });
 });
 
 // GET: Logout route
