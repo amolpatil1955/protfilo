@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 
 
 //connetion to mongodb
-mongoose.connect("mongodb://localhost:27017/login-data")
+mongoose.connect("mongodb+srv://ap448004:0YRHwo1B7QctPq3K@user.wijqtt4.mongodb.net/?retryWrites=true&w=majority&appName=user")
 .then(()=>{
     console.log("Connected to MongoDB");   
 })
