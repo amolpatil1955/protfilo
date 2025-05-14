@@ -11,6 +11,10 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
+import path from "path";
+const __dirname = path.resolve();
+app.set("views", path.join(__dirname, "views"));
+
 // Middleware setup
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
