@@ -87,30 +87,31 @@ app.get("/", (req, res) => {
 // POST: Handle login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  console.log("Login attempt with:", email); // Debug
 
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send("❌ Email not found.");
+      console.log("User not found");
+      return res.redirect("/");
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).send("❌ Incorrect password.");
+      console.log("Password mismatch");
+      return res.redirect("/");
     }
 
-    req.session.user = {
-      id: user._id,
-      name: user.name,
-      email: user.email,
-    };
+    req.session.user = user; // 🔥 Missing in your original code!
+    console.log("Login successful");
 
-    res.redirect("/home");
+    return res.redirect("/home");
   } catch (err) {
-    console.error("Login Error:", err);
-    res.status(500).send("Internal Server Error");
+    console.error("Login error:", err);
+    return res.status(500).send("Internal Server Error");
   }
 });
+
 
 // GET: Home page (after login)
 app.get("/home", (req, res) => {
