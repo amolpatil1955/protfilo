@@ -22,11 +22,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Prevent caching
-app.use((req, res, next) => {
-  res.set("Cache-Control", "no-store");
-  next();
-});
 
 // Session middleware
 app.use(
